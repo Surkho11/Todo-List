@@ -5,7 +5,31 @@ const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#tasksList');
 const emptyList = document.querySelector('#emptyList')
 
-form.addEventListener('submit', function (event) {
+
+// Добавление задачи
+form.addEventListener('submit', addTask)
+
+
+// Удаление задачи
+taskList.addEventListener('click', deleteTask)
+
+
+
+function deleteTask(event) {
+	console.log(event.target);
+
+	if (event.target.dataset.action === 'delete') {
+		const parenNode = event.target.closest('.list-group-item')
+		parenNode.remove()
+	}
+
+	if (taskList.children.length === 1 ) {
+		emptyList.classList.remove('none')
+	}
+}
+
+
+function addTask(event) {
 	// отменяем отправку формы
 	event.preventDefault();
 	
@@ -36,4 +60,4 @@ form.addEventListener('submit', function (event) {
 	if (taskList.children.length > 1 ) {
 		emptyList.classList.add('none')
 	}
-})
+}
