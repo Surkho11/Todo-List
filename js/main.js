@@ -2,6 +2,7 @@
 
 const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
+const taskList = document.querySelector('#tasksList');
 
 form.addEventListener('submit', function (event) {
 	// отменяем отправку формы
@@ -24,5 +25,7 @@ form.addEventListener('submit', function (event) {
 					</div>
 				</li>
 	`
-	console.log(taskHTML);
+	// Добавляем задачу на страницу
+
+	taskList.insertAdjacentHTML('beforeend', taskHTML);
 })
