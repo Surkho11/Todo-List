@@ -13,7 +13,17 @@ form.addEventListener('submit', addTask)
 // Удаление задачи
 taskList.addEventListener('click', deleteTask)
 
+// Отмечаем задачу завершенной
+taskList.addEventListener('click', doneTask)
 
+function doneTask(event) {
+
+	if (event.target.dataset.action == 'done') {
+		const parenNode = event.target.closest('.list-group-item')
+		const taskTitle = parenNode.querySelector('.task-title');
+		taskTitle.classList.add('task-title--done')
+	}
+}
 
 function deleteTask(event) {
 	console.log(event.target);
