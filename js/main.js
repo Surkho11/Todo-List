@@ -3,6 +3,7 @@
 const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#tasksList');
+const emptyList = document.querySelector('#emptyList')
 
 form.addEventListener('submit', function (event) {
 	// отменяем отправку формы
@@ -26,6 +27,13 @@ form.addEventListener('submit', function (event) {
 				</li>
 	`
 	// Добавляем задачу на страницу
-
 	taskList.insertAdjacentHTML('beforeend', taskHTML);
+
+	// Очищаем поле ввода и возвращаем на него фокус
+	taskInput.value = '';
+	taskInput.focus();
+
+	if (taskList.children.length > 1 ) {
+		emptyList.classList.add('none')
+	}
 })
